@@ -121,6 +121,10 @@ Railway (free tier)
 
 ⚠️ Cloud deployment is optional. Local execution is sufficient for evaluation.
 
+# 📌 Demo Video Link
+
+https://drive.google.com/drive/folders/1U2NBXlntO0hvd-ZK-KgNrhyZXfeTqTJ5?usp=sharing
+
 # 📌 Notes
 
 Devstral Small 2 is simulated via a developer role prompt, which is acceptable where direct access is unavailable.
