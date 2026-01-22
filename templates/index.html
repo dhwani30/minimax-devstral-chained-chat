@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MiniMax M2.1 – Chained AI Chat</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>🧠 Chained AI Chat</h2>
+
+    <textarea id="prompt" placeholder="Enter your question..."></textarea>
+    <button onclick="sendPrompt()">Send</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+async function sendPrompt() {
+    const input = document.getElementById("prompt");
+    const output = document.getElementById("output");
+
+    const prompt = input.value.trim();
+    if (!prompt) return;
+
+    output.innerHTML = "<p>⏳ Generating response...</p>";
+
+    const response = await fetch("/chat", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store"
+    },
+    cache: "no-store",   // 🔥 THIS FIXES IT
+    body: JSON.stringify({ prompt })
+    });
+
+
+    const data = await response.json();
+
+    output.innerHTML = `
+        <h3>🧠 Planner</h3>
+        <pre>${data.planner}</pre>
+
+        <h3>🛠 Developer</h3>
+        <pre>${data.developer}</pre>
+    `;
+
+    input.value = "";
+}
+</script>
+
+</body>
+</html>
